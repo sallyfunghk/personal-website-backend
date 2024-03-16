@@ -1,13 +1,21 @@
 package com.sallyfunghk.mywebbackend.controller;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import com.sallyfunghk.mywebbackend.entity.ContactForm;
 import com.sallyfunghk.mywebbackend.service.ContactFormService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.*;
 
 @RestController
 @AllArgsConstructor
@@ -18,7 +26,8 @@ public class ContactFormController {
     // Build create ContactForm REST API
     // POST http://{host_name}/api/contact_forms
     @PostMapping
-    public ResponseEntity<ContactForm> createContactForm(@RequestBody ContactForm contactForm){
+    public ResponseEntity<ContactForm> createContactForm(@Valid @RequestBody ContactForm contactForm){
+
         ContactForm savedContactForm = contactFormService.createContactForm(contactForm);
         return new ResponseEntity<>(savedContactForm, HttpStatus.CREATED);
     }
@@ -37,5 +46,18 @@ public class ContactFormController {
     public ResponseEntity<String> deleteContactForm(@PathVariable("id") Long contactFormId){
         contactFormService.deleteContactForm(contactFormId);
         return new ResponseEntity<>("ContactForm deleted.", HttpStatus.OK);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
     }
 }
