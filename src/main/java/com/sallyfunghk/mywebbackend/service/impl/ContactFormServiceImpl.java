@@ -1,12 +1,12 @@
 package com.sallyfunghk.mywebbackend.service.impl;
 
-import lombok.AllArgsConstructor;
 import com.sallyfunghk.mywebbackend.entity.ContactForm;
 import com.sallyfunghk.mywebbackend.repository.ContactFormRepository;
 import com.sallyfunghk.mywebbackend.service.ContactFormService;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
