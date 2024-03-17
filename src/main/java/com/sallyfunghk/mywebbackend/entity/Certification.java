@@ -20,26 +20,26 @@ public class Certification {
     private Long id;
 
     @Column(nullable = false, name = "start_month")
-    @NotBlank(message = "start_month is required")
-    private String start_month;
+    @NotBlank(message = "startMonth is required")
+    private String startMonth;
 
     @Column(nullable = false, name = "start_year")
-    @NotBlank(message = "start_year is required")
-    private String start_year;
+    @NotBlank(message = "startYear is required")
+    private String startYear;
 
     @Column(nullable = false, name = "end_month")
-    @NotBlank(message = "end_month is required")
-    private String end_month;
+    @NotBlank(message = "endMonth is required")
+    private String endMonth;
 
     @Column(nullable = false, name = "end_year")
-    @NotBlank(message = "end_year is required")
-    private String end_year;
+    @NotBlank(message = "endYear is required")
+    private String endYear;
 
     @Column(nullable = false, name = "name")
     @NotBlank(message = "name is required")
     private String name;
 
     @Column(nullable = false, name = "organisation_name")
-    @NotBlank(message = "organisation_name is required")
-    private String organisation_name;
+    @NotBlank(message = "organisationName is required")
+    private String organisationName;
 }

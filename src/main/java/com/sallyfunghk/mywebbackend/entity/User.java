@@ -26,7 +26,7 @@ public class User {
     private String password;
 
     @Column(name = "is_active")
-    private boolean is_active;
+    private boolean isActive;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")

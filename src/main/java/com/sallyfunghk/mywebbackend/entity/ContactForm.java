@@ -30,10 +30,10 @@ public class ContactForm {
     private String email;
 
     @Column
-    private String phone_num;
+    private String phoneNum;
 
     @Column
-    private String company_name;
+    private String companyName;
 
     @Column(nullable = false)
     @NotBlank(message = "content is required")

@@ -23,27 +23,27 @@ public class WorkExperience {
     private Long id;
 
     @Column(nullable = false, name = "start_month")
-    @NotBlank(message = "start_month is required")
-    private String start_month;
+    @NotBlank(message = "startMonth is required")
+    private String startMonth;
 
     @Column(nullable = false, name = "start_year")
-    @NotBlank(message = "start_year is required")
-    private String start_year;
+    @NotBlank(message = "startYear is required")
+    private String startYear;
 
     @Column(nullable = false, name = "end_month")
-    @NotBlank(message = "end_month is required")
-    private String end_month;
+    @NotBlank(message = "endMonth is required")
+    private String endMonth;
 
     @Column(nullable = false, name = "end_year")
-    @NotBlank(message = "end_year is required")
-    private String end_year;
+    @NotBlank(message = "endYear is required")
+    private String endYear;
 
     @Column(nullable = false, name = "title")
     @NotBlank(message = "title is required")
     private String title;
 
     @Column(name = "company_name")
-    private String company_name;
+    private String companyName;
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "responsibilities", joinColumns = @JoinColumn(name = "work_exp_id"))
@@ -58,5 +58,5 @@ public class WorkExperience {
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "tech_skills", joinColumns = @JoinColumn(name = "work_exp_id"))
     @Column(name = "tech_skill")
-    private List<String> tech_skills = new ArrayList<>();
+    private List<String> techSkills = new ArrayList<>();
 }
