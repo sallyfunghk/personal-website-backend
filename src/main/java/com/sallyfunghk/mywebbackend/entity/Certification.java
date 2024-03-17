@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "certification")
+@Table(name = "certifications")
 public class Certification {
 
     @Id
