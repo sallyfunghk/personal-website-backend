@@ -15,8 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "work_experiences")
-public class WorkExperience {
+@Table(name = "works")
+public class Work {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,17 +46,17 @@ public class WorkExperience {
     private String companyName;
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "responsibilities", joinColumns = @JoinColumn(name = "work_exp_id"))
+    @CollectionTable(name = "responsibilities", joinColumns = @JoinColumn(name = "work_id"))
     @Column(name = "responsibility")
     private List<String> responsibilities = new ArrayList<>();
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "projects", joinColumns = @JoinColumn(name = "work_exp_id"))
+    @CollectionTable(name = "projects", joinColumns = @JoinColumn(name = "work_id"))
     @Column(name = "project")
     private List<String> projects = new ArrayList<>();
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "tech_skills", joinColumns = @JoinColumn(name = "work_exp_id"))
+    @CollectionTable(name = "tech_skills", joinColumns = @JoinColumn(name = "work_id"))
     @Column(name = "tech_skill")
     private List<String> techSkills = new ArrayList<>();
 }
