@@ -22,13 +22,18 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "password")
     private String password;
 
-    @Column(name = "is_active")
-    private boolean isActive;
+    @Column(name = "enabled")
+    private boolean enabled;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     private Role role;
+
+    private String oldPassword;
 }

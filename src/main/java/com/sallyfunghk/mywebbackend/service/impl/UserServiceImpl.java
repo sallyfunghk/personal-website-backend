@@ -34,7 +34,9 @@ public class UserServiceImpl implements UserService {
     public User updateUser(User user) {
         User existingUser = userRepository.findById(user.getId()).get();
 
-        // TODO: Update user info
+        existingUser.setName(user.getName());
+        existingUser.setEnabled(user.isEnabled());
+        existingUser.setRole(user.getRole());
 
         User updatedUser = userRepository.save(existingUser);
         return updatedUser;
@@ -43,5 +45,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
+    }
+
+    @Override
+    public User changePassword(User user) {
+        User existingUser = userRepository.findById(user.getId()).get();
+
+        if (user.getOldPassword() != existingUser.getPassword()) {
+            // TODO: Throw exception
+        }
+        existingUser.setPassword(user.getPassword());
+
+        User updatedUser = userRepository.save(existingUser);
+        return updatedUser;
     }
 }
