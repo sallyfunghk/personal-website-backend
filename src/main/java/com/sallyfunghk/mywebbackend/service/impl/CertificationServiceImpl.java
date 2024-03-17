@@ -33,9 +33,14 @@ public class CertificationServiceImpl implements CertificationService {
     @Override
     public Certification updateCertification(Certification certification) {
         Certification existingCert = certificationRepository.findById(certification.getId()).get();
-        /*existingCert.setStart_month(certification.getStart_month());
-        existingCert.setEnd_year();
-        existingCert.setEnd_month(certification.getEnd_month());*/
+
+        existingCert.setStartMonth(certification.getStartMonth());
+        existingCert.setStartYear(certification.getStartYear());
+        existingCert.setEndMonth(certification.getEndMonth());
+        existingCert.setEndYear(certification.getEndYear());
+        existingCert.setName(certification.getName());
+        existingCert.setOrganisationName(certification.getOrganisationName());
+
         Certification updatedCert = certificationRepository.save(existingCert);
         return updatedCert;
     }
